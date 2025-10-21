@@ -6,85 +6,241 @@
   <title>رزومه — اسماعیل زاهری</title>
   <!-- Persian font -->
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root{
-      --bg:#0f1724;
-      --card:#091223;
-      --accent:#7c3aed;
-      --muted:#94a3b8;
+    :root {
+      --bg: #0f1724;
+      --card: #091223;
+      --accent: #7c3aed;
+      --accent-2: #06b6d4;
+      --muted: #94a3b8;
       --glass: rgba(255,255,255,0.04);
       --glass-2: rgba(255,255,255,0.02);
       --shadow: 0 6px 18px rgba(2,6,23,0.6);
+      --transition: all 0.3s ease;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family: 'Vazirmatn', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:linear-gradient(180deg,#071029 0%, #07172b 60%);color:#e6eef8}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:32px auto;padding:20px}
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Vazirmatn', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg, #071029 0%, #07172b 60%);
+      color: #e6eef8;
+    }
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+    a:hover { color: var(--accent); }
+    .container { max-width: 1200px; margin: 40px auto; padding: 24px; }
 
-    /* layout */
-    .grid{display:grid;grid-template-columns:360px 1fr;gap:20px}
-    @media (max-width:880px){.grid{grid-template-columns:1fr}}
+    /* Enhanced layout */
+    .grid { display: grid; grid-template-columns: 380px 1fr; gap: 24px; }
+    @media (max-width: 1024px) { .grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; gap: 16px; } }
 
-    /* sidebar */
-    .card{background:linear-gradient(180deg,var(--card), rgba(9,18,35,0.85));border-radius:16px;padding:20px;box-shadow:var(--shadow)}
-    .photo{width:120px;height:120px;border-radius:999px;overflow:hidden;border:4px solid rgba(255,255,255,0.06);margin:0 auto;display:block}
-    .photo img{width:100%;height:100%;object-fit:cover;display:block}
-    h1{font-size:22px;margin:12px 0 4px;text-align:center}
-    p.sub{margin:0;text-align:center;color:var(--muted)}
+    /* Sidebar */
+    .card {
+      background: linear-gradient(180deg, var(--card), rgba(9,18,35,0.85));
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(2,6,23,0.8); }
+    .photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 6px solid rgba(255,255,255,0.08);
+      margin: 0 auto 16px;
+      display: block;
+      transition: var(--transition);
+    }
+    .photo:hover { transform: scale(1.05); border-color: var(--accent); }
+    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    h1 { font-size: 24px; margin: 0 0 6px; text-align: center; }
+    p.sub { margin: 0 0 16px; text-align: center; color: var(--muted); font-size: 14px; }
 
-    .meta{margin-top:18px}
-    .meta .row{display:flex;justify-content:space-between;padding:8px 10px;border-radius:10px;background:var(--glass);margin-bottom:10px}
-    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--glass),var(--glass-2));font-weight:600}
+    .meta { margin-top: 20px; }
+    .meta .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--glass);
+      margin-bottom: 12px;
+      transition: var(--transition);
+    }
+    .meta .row:hover { background: var(--glass-2); transform: translateX(4px); }
+    .tag {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--glass), var(--glass-2));
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .tag:hover { background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
 
-    .skills{margin-top:10px}
-    .skill{margin-bottom:12px}
-    .skill .label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;color:var(--muted)}
-    .bar{height:10px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden}
-    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#06b6d4);border-radius:999px;width:0;transition:width 900ms cubic-bezier(.2,.9,.2,1)}
+    .skills { margin-top: 16px; }
+    .skill { margin-bottom: 16px; }
+    .skill .label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--muted);
+    }
+    .bar {
+      height: 12px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar > i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 999px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(.2,.9,.2,1);
+    }
 
-    /* main */
-    .hero{display:flex;align-items:center;justify-content:space-between;gap:10px}
-    @media (max-width:880px){.hero{flex-direction:column;align-items:flex-start}}
-    .about{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
-    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .badge{padding:8px 12px;border-radius:10px;background:var(--glass);font-weight:600}
+    /* Main */
+    .hero { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    @media (max-width: 1024px) { .hero { flex-direction: column; align-items: flex-start; gap: 12px; } }
+    .about {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding: 20px;
+      border-radius: 16px;
+      transition: var(--transition);
+    }
+    .about:hover { box-shadow: var(--shadow); }
+    .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .badge {
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--glass);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .badge:hover { background: var(--accent); color: #fff; }
 
-    .section{margin-top:18px}
-    .section h3{margin:0 0 10px}
-    .project{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));margin-bottom:12px}
-    .project .title{display:flex;justify-content:space-between;align-items:center}
-    .links{display:flex;gap:8px;margin-top:8px}
-    .chip{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.03);font-size:13px}
+    .section { margin-top: 24px; }
+    .section h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      position: relative;
+    }
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    .section:hover h3::after { width: 80px; }
+    .project {
+      padding: 14px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      margin-bottom: 14px;
+      transition: var(--transition);
+    }
+    .project:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(2,6,23,0.4); }
+    .project .title { display: flex; justify-content: space-between; align-items: center; font-size: 16px; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .chip {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    .chip:hover { background: var(--accent-2); color: #fff; }
 
-    /* footer actions */
-    .actions{display:flex;gap:10px;margin-top:12px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#06b6d4);color:white;font-weight:700;cursor:pointer;border:none}
-    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+    /* Footer actions */
+    .actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+    .btn:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(124,58,237,0.4); }
+    .ghost { background: transparent; border: 1px solid rgba(255,255,255,0.08); color: var(--muted); }
+    .ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* responsive tweaks */
-    .contact-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-    @media (max-width:480px){.contact-list{grid-template-columns:1fr}}
+    /* Responsive contact list */
+    .contact-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 12px; }
+    .contact-item { padding: 12px; border-radius: 12px; background: var(--glass); transition: var(--transition); }
+    .contact-item:hover { transform: translateY(-2px); background: var(--glass-2); }
 
-    /* subtle motion */
-    .float{animation:float 6s ease-in-out infinite}
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    /* Animations */
+    .float { animation: float 5s ease-in-out infinite; }
+    @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0); } }
+    .fade-in { opacity: 0; animation: fadeIn 1s forwards; }
+    @keyframes fadeIn { to { opacity: 1; } }
 
-    /* small text */
-    small{color:var(--muted)}
+    /* Utilities */
+    small { color: var(--muted); font-size: 13px; }
+    .copy {
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    .copy:hover { background: var(--accent); color: #fff; }
+    input[type=file] { display: none; }
 
-    /* utilities */
-    .copy{cursor:pointer;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);font-size:13px}
-    input[type=file]{display:none}
+    /* Dark/Light mode */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: var(--glass);
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .theme-toggle:hover { background: var(--accent); }
+    body.light {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --accent: #7c3aed;
+      --muted: #64748b;
+      --glass: rgba(0,0,0,0.04);
+      --glass-2: rgba(0,0,0,0.02);
+      --shadow: 0 6px 18px rgba(0,0,0,0.1);
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 60%);
+      color: #1e293b;
+    }
   </style>
 </head>
-<body>
+<body class="fade-in">
+  <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></div>
   <div class="container">
     <div class="grid">
       <!-- SIDEBAR -->
       <aside class="card">
         <div style="text-align:center">
           <label for="photoInput" class="photo float" title="برای تغییر عکس کلیک کنید">
-            <img id="avatar" src="https://via.placeholder.com/400x400?text=%D8%B9%DA%A9%D8%B3+%D8%B4%D9%85%D8%A7" alt="عکس اسماعیل زاهری">
+            <img id="avatar" src="theesmaeil.png" alt="عکس اسماعیل زاهری">
           </label>
           <input id="photoInput" type="file" accept="image/*">
         </div>
@@ -99,21 +255,25 @@
         <div class="section">
           <h3>ارتباط</h3>
           <div class="contact-list">
-            <div class="card" style="padding:10px;background:transparent;box-shadow:none">
-              <div><small>تلگرام (پشتیبانی)</small></div>
-              <div style="margin-top:6px;font-weight:700">@iNoeviSupport <button class="copy" data-copy="@iNoeviSupport">کپی</button></div>
+            <div class="contact-item">
+              <div><small><i class="fas fa-headset"></i> تلگرام (پشتیبانی)</small></div>
+              <div style="margin-top:8px;font-weight:700">@iNoeviSupport <button class="copy" data-copy="@iNoeviSupport">کپی</button></div>
             </div>
-            <div class="card" style="padding:10px;background:transparent;box-shadow:none">
-              <div><small>مالک</small></div>
-              <div style="margin-top:6px;font-weight:700">@theesmaeil1 <button class="copy" data-copy="@theesmaeil1">کپی</button></div>
+            <div class="contact-item">
+              <div><small><i class="fas fa-user"></i> مالک</small></div>
+              <div style="margin-top:8px;font-weight:700">@theesmaeil1 <button class="copy" data-copy="@theesmaeil1">کپی</button></div>
             </div>
-            <div class="card" style="padding:10px;background:transparent;box-shadow:none">
-              <div><small>کانال رسمی</small></div>
-              <div style="margin-top:6px;font-weight:700">@Spotify_iR <button class="copy" data-copy="@Spotify_iR">کپی</button></div>
+            <div class="contact-item">
+              <div><small><i class="fas fa-channel"></i> کانال رسمی</small></div>
+              <div style="margin-top:8px;font-weight:700">@Spotify_iR <button class="copy" data-copy="@Spotify_iR">کپی</button></div>
             </div>
-            <div class="card" style="padding:10px;background:transparent;box-shadow:none">
-              <div><small>وب‌سایت‌ها</small></div>
-              <div style="margin-top:6px;line-height:1.4">ViraiGame.ir<br>iNeoPlus.ir<br>GambronRP.ir</div>
+            <div class="contact-item">
+              <div><small><i class="fas fa-globe"></i> وب‌سایت‌ها</small></div>
+              <div style="margin-top:8px;line-height:1.5">
+                <a href="https://viraigame.ir" target="_blank">ViraiGame.ir</a><br>
+                <a href="https://ineoplus.ir" target="_blank">iNeoPlus.ir</a><br>
+                <a href="https://gambronrp.ir" target="_blank">GambronRP.ir</a>
+              </div>
             </div>
           </div>
         </div>
@@ -159,11 +319,11 @@
         <div class="section">
           <h3>اقدام</h3>
           <div class="actions">
-            <button class="btn" id="downloadCv">چاپ / دانلود</button>
-            <button class="btn ghost" id="contactMe">ارسال پیام</button>
+            <button class="btn" id="downloadCv"><i class="fas fa-download"></i> چاپ / دانلود</button>
+            <button class="btn ghost" id="contactMe"><i class="fas fa-envelope"></i> ارسال پیام</button>
+            <button class="btn ghost" id="shareCv"><i class="fas fa-share-alt"></i> اشتراک‌گذاری</button>
           </div>
         </div>
-
       </aside>
 
       <!-- MAIN -->
@@ -172,8 +332,7 @@
           <div class="hero">
             <div style="flex:1">
               <h2 style="margin:0">سلام — من اسماعیل زاهری</h2>
-              <p style="margin:8px 0 0;color:var(--muted)">برنامه‌نویس چندزبانه، توسعه‌دهنده ربات‌های تلگرام و راه‌حل‌های گیمیگ و FiveM. تجربه کار در پروژه‌های رباتی، فروشگاه دیجیتال گیم و سرورهای RolePlay.</p>
-
+              <p style="margin:10px 0 0;color:var(--muted)">برنامه‌نویس چندزبانه، توسعه‌دهنده ربات‌های تلگرام و راه‌حل‌های گیمیگ و FiveM. تجربه کار در پروژه‌های رباتی، فروشگاه دیجیتال گیم و سرورهای RolePlay.</p>
               <div class="badges">
                 <div class="badge">ربات‌نویسی تلگرام</div>
                 <div class="badge">FiveM / MTA / SA-MP</div>
@@ -181,9 +340,9 @@
                 <div class="badge">پشتیبانی 24/7</div>
               </div>
             </div>
-            <div style="min-width:160px;text-align:left">
+            <div style="min-width:180px;text-align:left">
               <small>دانشجو — مهندسی کامپیوتر</small>
-              <div style="margin-top:10px">بندرعباس • 23 سال</div>
+              <div style="margin-top:12px">بندرعباس • 23 سال</div>
             </div>
           </div>
 
@@ -191,58 +350,62 @@
             <h3>چکیده‌ای از فعالیت‌ها</h3>
             <div class="project">
               <div class="title"><strong>کانال رسمی تیم اکستورم</strong><small>اطلاعات کانال و ارتباط</small></div>
-              <div style="margin-top:8px">کانال رسمی تیم اکستورم — اطلاع‌رسانی و اخبار تیم.</div>
+              <div style="margin-top:10px">کانال رسمی تیم اکستورم — اطلاع‌رسانی و اخبار تیم.</div>
               <div class="links">
                 <span class="chip">ربات مدیریت گروه اکستورم — کیفیت و امنیت بالا</span>
-                <span class="chip">ربات‌ها: @XTormBot ، @ExtormBot</span>
+                <span class="chip">ربات‌ها: <a href="https://t.me/XTormBot" target="_blank">@XTormBot</a> ، <a href="https://t.me/ExtormBot" target="_blank">@ExtormBot</a></span>
               </div>
             </div>
 
             <div class="project">
               <div class="title"><strong>ویرای گیم — ViraiGame</strong><small>فروشگاه و سرویس‌های گیمیگ</small></div>
-              <div style="margin-top:8px">ویرای گیم — عرضه مودها، مپ‌ها و منابع FiveM، SA-MP و MTA با پشتیبانی ۲۴/۷ و پرداخت امن. توسعه و مدیریت فروشگاه و پشتیبانی کاربران.</div>
+              <div style="margin-top:10px">ویرای گیم — عرضه مودها، مپ‌ها و منابع FiveM، SA-MP و MTA با پشتیبانی ۲۴/۷ و پرداخت امن. توسعه و مدیریت فروشگاه و پشتیبانی کاربران.</div>
               <div class="links">
-                <span class="chip">وب: ViraiGame.ir</span>
-                <span class="chip">ربات: @ViraiGameBot</span>
+                <span class="chip"><a href="https://viraigame.ir" target="_blank">وب: ViraiGame.ir</a></span>
+                <span class="chip"><a href="https://t.me/ViraiGameBot" target="_blank">ربات: @ViraiGameBot</a></span>
               </div>
             </div>
 
             <div class="project">
               <div class="title"><strong>Spotify_iR — کانال رسمی</strong><small>کانال تلگرامی</small></div>
-              <div style="margin-top:8px">مالک کانال: @theesmaeil1 — تاکید بر رعایت قوانین تلگرام و محتوای بدون نقض کپی‌رایت.</div>
+              <div style="margin-top:10px">مالک کانال: <a href="https://t.me/theesmaeil1" target="_blank">@theesmaeil1</a> — تاکید بر رعایت قوانین تلگرام و محتوای بدون نقض کپی‌رایت.</div>
             </div>
 
             <div class="project">
               <div class="title"><strong>iNoevi — iNeoPlus</strong><small>دروازه نوآوری</small></div>
-              <div style="margin-top:8px">خدمات: طراحی ربات‌های هوشمند تلگرام، تبلیغات هدفمند، توسعه API، راه‌حل‌های FiveM و گیمینگ.</div>
-              <div class="links"><span class="chip">وب: iNeoPlus.ir</span><span class="chip">پشتیبانی: @iNoeviSupport</span></div>
+              <div style="margin-top:10px">خدمات: طراحی ربات‌های هوشمند تلگرام، تبلیغات هدفمند، توسعه API، راه‌حل‌های FiveM و گیمینگ.</div>
+              <div class="links">
+                <span class="chip"><a href="https://ineoplus.ir" target="_blank">وب: iNeoPlus.ir</a></span>
+                <span class="chip"><a href="https://t.me/iNoeviSupport" target="_blank">پشتیبانی: @iNoeviSupport</a></span>
+              </div>
             </div>
 
             <div class="project">
               <div class="title"><strong>Gambron RP</strong><small>سرورهای RolePlay و پشتیبانی</small></div>
-              <div style="margin-top:8px">فعالیت در زمینه سرورها: VMP | FiveM | SA-MP | MTA. پشتیبانی از جامعه گیمرها، مدیریت گروه و شبکه‌های اجتماعی.</div>
-              <div class="links"><span class="chip">Site: GambronRP.ir</span><span class="chip">Group: @GambronRP_Group</span></div>
+              <div style="margin-top:10px">فعالیت در زمینه سرورها: VMP | FiveM | SA-MP | MTA. پشتیبانی از جامعه گیمرها، مدیریت گروه و شبکه‌های اجتماعی.</div>
+              <div class="links">
+                <span class="chip"><a href="https://gambronrp.ir" target="_blank">وب: GambronRP.ir</a></span>
+                <span class="chip"><a href="https://t.me/GambronRP_Group" target="_blank">گروه: @GambronRP_Group</a></span>
+              </div>
             </div>
-
           </div>
 
           <div class="section">
             <h3>تجربیات پروژه‌ای — خلاصه</h3>
             <div class="project">
               <strong>ربات‌های مدیریت گروه</strong>
-              <div style="margin-top:6px">طراحی و توسعه ربات‌های مدیریت گروه با تمرکز روی امنیت، جلوگیری از افلاین و امکانات مدیریتی. پیاده‌سازی در تلگرام با استفاده از API رسمی و کتابخانه‌های محبوب.</div>
+              <div style="margin-top:8px">طراحی و توسعه ربات‌های مدیریت گروه با تمرکز روی امنیت، جلوگیری از آفلاین و امکانات مدیریتی. پیاده‌سازی در تلگرام با استفاده از API رسمی و کتابخانه‌های محبوب.</div>
             </div>
 
             <div class="project">
               <strong>توسعه لوآ برای FiveM و SA-MP</strong>
-              <div style="margin-top:6px">توسعه مودها، اسکریپت‌ها و ریسورس‌های اختصاصی برای سرورهای RolePlay و چندنفره. بهینه‌سازی عملکرد و یکپارچه‌سازی با سیستم‌های پرداخت و پشتیبانی.</div>
+              <div style="margin-top:8px">توسعه مودها، اسکریپت‌ها و ریسورس‌های اختصاصی برای سرورهای RolePlay و چندنفره. بهینه‌سازی عملکرد و یکپارچه‌سازی با سیستم‌های پرداخت و پشتیبانی.</div>
             </div>
 
             <div class="project">
               <strong>فروشگاه دیجیتال و پشتیبانی</strong>
-              <div style="margin-top:6px">طراحی تجربه کاربری برای فروش منابع دیجیتال، مدیریت سفارش و پرداخت امن همراه با پشتیبانی 24/7.</div>
+              <div style="margin-top:8px">طراحی تجربه کاربری برای فروش منابع دیجیتال، مدیریت سفارش و پرداخت امن همراه با پشتیبانی 24/7.</div>
             </div>
-
           </div>
 
           <div class="section">
@@ -254,57 +417,75 @@
             <h3>نمونه کارها / لینک‌ها</h3>
             <div class="project">برای اضافه کردن لینک‌های نمونه کار (گیت‌هاب، دموها و ویدیوها) از دکمه ویرایش استفاده کنید.</div>
           </div>
-
         </div>
 
-        <footer style="margin-top:14px;text-align:center;color:var(--muted)">
+        <footer style="margin-top:20px;text-align:center;color:var(--muted)">
           ساخته شده با ❤️ — اسماعیل زاهری — آماده همکاری و پروژه
         </footer>
-
       </main>
     </div>
   </div>
 
   <script>
-    // عکس پروفایل پیش نمایش
+    // Profile picture preview
     const photoInput = document.getElementById('photoInput');
     const avatar = document.getElementById('avatar');
-    document.querySelector('.photo').addEventListener('click',()=>photoInput.click());
-    photoInput.addEventListener('change',e=>{
+    document.querySelector('.photo').addEventListener('click', () => photoInput.click());
+    photoInput.addEventListener('change', e => {
       const f = e.target.files && e.target.files[0];
-      if(!f) return;
+      if (!f) return;
       const url = URL.createObjectURL(f);
       avatar.src = url;
     });
 
-    // دکمه‌های کپی
-    document.querySelectorAll('.copy').forEach(btn=>{
-      btn.addEventListener('click',()=>{
+    // Copy buttons
+    document.querySelectorAll('.copy').forEach(btn => {
+      btn.addEventListener('click', () => {
         const txt = btn.dataset.copy;
-        navigator.clipboard.writeText(txt).then(()=>{
+        navigator.clipboard.writeText(txt).then(() => {
           btn.textContent = 'کپی شد';
-          setTimeout(()=>btn.textContent='کپی',1200);
-        }).catch(()=>alert('کپی ناموفق'));
+          setTimeout(() => btn.textContent = 'کپی', 1500);
+        }).catch(() => alert('کپی ناموفق'));
       });
     });
 
-    // دکمه چاپ/دانلود
-    document.getElementById('downloadCv').addEventListener('click',()=>{
+    // Print/Download button
+    document.getElementById('downloadCv').addEventListener('click', () => {
       window.print();
     });
 
-    // دکمه ارسال پیام (رفتن به تلگرام)
-    document.getElementById('contactMe').addEventListener('click',()=>{
-      window.open('https://t.me/iNoeviSupport','_blank');
+    // Contact button (redirect to Telegram)
+    document.getElementById('contactMe').addEventListener('click', () => {
+      window.open('https://t.me/iNoeviSupport', '_blank');
     });
 
-    // آنیمیت بارها هنگام لود
-    window.addEventListener('load',()=>{
-      document.querySelectorAll('.bar > i').forEach((el)=>{
+    // Share button
+    document.getElementById('shareCv').addEventListener('click', () => {
+      if (navigator.share) {
+        navigator.share({
+          title: 'رزومه اسماعیل زاهری',
+          text: 'رزومه من رو چک کن!',
+          url: window.location.href
+        }).catch(console.error);
+      } else {
+        alert('اشتراک‌گذاری در این مرورگر پشتیبانی نمی‌شود.');
+      }
+    });
+
+    // Animate skill bars on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.bar > i').forEach((el, i) => {
         const w = el.style.width;
         el.style.width = '0%';
-        setTimeout(()=>el.style.width = w,200);
+        setTimeout(() => el.style.width = w, 300 + i * 100);
       });
+    });
+
+    // Dark/Light mode toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      themeToggle.innerHTML = document.body.classList.contains('light') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     });
   </script>
 </body>
